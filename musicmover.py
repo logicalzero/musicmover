@@ -530,7 +530,7 @@ if __name__ == "__main__":
     if args.gui:
         MM = TkMusicMover
     
-    mover = MusicMover(libraryFile=args.library, target=args.target)
+    mover = MM(libraryFile=args.library, target=args.target)
     
     mover.freshenMusic(playlist=args.playlist, percent=args.percent,
                        minFree=args.minfree, maxSize=args.maxsize)
