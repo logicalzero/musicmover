@@ -129,6 +129,7 @@ class MusicMover(object):
             filesystem.
         """
         # TODO: Should probably do this based on character code.
+        filename = filename.encode('ascii','replace')
         name, ext = os.path.splitext(filename)
         for c in self.badCharacters:
             name = name.replace(c, '_')
@@ -267,7 +268,7 @@ class MusicMover(object):
             raise ValueError, "Either minFree or maxSize must be supplied."
 
         if maxSize is None:
-            maxSize = self.round(bytesFree/1048576) - minFree
+            maxSize = (targetFree/1048576) - minFree
         
         maxSize = self.roundUpTo(maxSize * 1048576, targetBlockSize)
             
